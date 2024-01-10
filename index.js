@@ -7,8 +7,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.post('*', (req, res) => {
     const data = {
+        ...req.query,
         ...req.body,
-        ...req.query
     };
     console.log(data);
     res.send(data);
