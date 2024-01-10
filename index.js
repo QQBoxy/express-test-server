@@ -6,8 +6,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.post('*', (req, res) => {
-    console.log(req.body);
-    res.send(req.body);
+    const data = {
+        ...req.body,
+        ...req.query
+    };
+    console.log(data);
+    res.send(data);
 });
 
 app.get('*', (req, res) => {
